@@ -38,7 +38,6 @@ public class VehicleServiceImpl implements VehicleService {
         if (exelIdOptional.isPresent()) {
             Integer exelId = exelIdOptional.get();
 
-            // Append the Excel ID to the registration number
             String updatedRegistrationNumber = exelId.toString();
 
             Vehicle vehicle = new Vehicle();
@@ -54,7 +53,6 @@ public class VehicleServiceImpl implements VehicleService {
 
             return vehicleRepository.save(vehicle);
         } else {
-            // Handle the case where the ID is not found or couldn't be created
             return null;
         }
     }

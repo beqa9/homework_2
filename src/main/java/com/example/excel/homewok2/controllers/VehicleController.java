@@ -4,7 +4,6 @@ import com.example.excel.homewok2.entities.Vehicle;
 import com.example.excel.homewok2.models.VehicleModel;
 import com.example.excel.homewok2.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
