@@ -25,12 +25,15 @@ public class ExelService {
                 Double longitude = row.getCell(1).getNumericCellValue();
                 String name = row.getCell(2).getStringCellValue();
 
-                Data data= new Data();
-                data.setLatitude(latitude);
-                data.setLongitude(longitude);
-                data.setName(name);
+                // Check if a similar entry already exists in the database
+                if (!dataRepository.existsByLatitudeAndLongitudeAndName(latitude, longitude, name)) {
+                    Data data = new Data();
+                    data.setLatitude(latitude);
+                    data.setLongitude(longitude);
+                    data.setName(name);
 
-                dataRepository.save(data);
+                    dataRepository.save(data);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

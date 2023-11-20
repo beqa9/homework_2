@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "vehicles")
+@Table(schema = "public",name = "vehicles")
 public class Vehicle {
     @Id
     private Integer id;

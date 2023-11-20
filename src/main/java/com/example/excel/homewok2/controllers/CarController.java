@@ -34,7 +34,7 @@ public class CarController {
 
             DataHistory dataHistory = new DataHistory();
             dataHistory.setLatitude(latitude);
-            dataHistory.setLongtitude(longitude);
+            dataHistory.setLongitude(longitude);
             dataHistory.setName(carNumber);
 
             dataService.saveToDatabase(data);

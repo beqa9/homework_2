@@ -15,7 +15,7 @@ public class DataHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Double latitude;
-    private Double longtitude;
+    private Double longitude;
     private String name;
     @Column(name = "created_at")
     private LocalDateTime createdAt;  // or Date createdAt for a Date field

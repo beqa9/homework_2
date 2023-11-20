@@ -1,23 +1,33 @@
 package com.example.excel.homewok2.controllers;
 
+import com.example.excel.homewok2.entities.Data;
+import com.example.excel.homewok2.repositories.DataRepository;
 import com.example.excel.homewok2.services.ExelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/excel")
 public class DataController {
     private final ExelService excelService;
+    private final DataRepository dataRepository;
+
+
+    @GetMapping("/data")
+    public ResponseEntity<List<Data>> getAllData() {
+        List<Data> allData = dataRepository.findAll();
+        return ResponseEntity.ok(allData);
+    }
 
     @Autowired
-    public DataController(ExelService exelService) {
+    public DataController(ExelService exelService, DataRepository dataRepository) {
         this.excelService = exelService;
+        this.dataRepository = dataRepository;
     }
 
     @PostMapping("/upload")
