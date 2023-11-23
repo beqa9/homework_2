@@ -14,11 +14,18 @@ public class DataHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "latitude")
     private Double latitude;
+
+    @Column(name = "longitude")
     private Double longitude;
+
+    @Column(name = "name")
     private String name;
+
     @Column(name = "created_at")
-    private LocalDateTime createdAt;  // or Date createdAt for a Date field
+    private LocalDateTime createdAt;
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;

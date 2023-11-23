@@ -9,14 +9,21 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "exel")
+@Table( schema ="public", name = "exel")
 public class Data {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "latitude")
     private Double latitude;
+
+    @Column(name = "longitude")
     private Double longitude;
+
+    @Column(name = "name")
     private String name;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 

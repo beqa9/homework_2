@@ -33,32 +33,18 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public Vehicle addVehicle(Integer id, VehicleModel vehicleModel) {
-        Optional<Integer> exelIdOptional = getExelIdForRegistrationNumber(vehicleModel.registrationNumber());
+        Vehicle vehicle = new Vehicle();
+        vehicle.setId(id);
+        vehicle.setRegistrationNumber(vehicleModel.registrationNumber());
+        vehicle.setDriverName(vehicleModel.driverName());
+        vehicle.setVehicleType(vehicleModel.vehicleType());
+        vehicle.setLength(vehicleModel.length());
+        vehicle.setWidth(vehicleModel.width());
+        vehicle.setHeight(vehicleModel.height());
+        vehicle.setCapacity(vehicleModel.capacity());
+        vehicle.setStatus(vehicleModel.status());
 
-        if (exelIdOptional.isPresent()) {
-            Integer exelId = exelIdOptional.get();
-
-            String updatedRegistrationNumber = exelId.toString();
-
-            Vehicle vehicle = new Vehicle();
-            vehicle.setId(id);
-            vehicle.setRegistrationNumber(updatedRegistrationNumber);
-            vehicle.setDriverName(vehicleModel.driverName());
-            vehicle.setVehicleType(vehicleModel.vehicleType());
-            vehicle.setLength(vehicleModel.length());
-            vehicle.setWidth(vehicleModel.width());
-            vehicle.setHeight(vehicleModel.height());
-            vehicle.setCapacity(vehicleModel.capacity());
-            vehicle.setStatus(vehicleModel.status());
-
-            return vehicleRepository.save(vehicle);
-        } else {
-            return null;
-        }
+        return vehicleRepository.save(vehicle);
     }
 
-    private Optional<Integer> getExelIdForRegistrationNumber(String registrationNumber) {
-        return dataRepository.findByName(registrationNumber)
-                .map(Data::getId);
-    }
 }
